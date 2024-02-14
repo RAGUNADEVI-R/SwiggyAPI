@@ -63,6 +63,17 @@ app.get('/fetchData',async function(request,response){
     }
 })
 
+
+//delete the data
+// app.delete('deleteData',async function(request,response){
+//     try{
+//         await Restaurant.deleteOne({""})
+//     }
+//     catch(error){
+
+//     }
+// })
+
 // sign in (or) to create new user
 app.post('/sign-up',async function(request,response){
     try{
