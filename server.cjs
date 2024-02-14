@@ -65,14 +65,27 @@ app.get('/fetchData',async function(request,response){
 
 
 //delete the data
-// app.delete('deleteData',async function(request,response){
-//     try{
-//         await Restaurant.deleteOne({""})
-//     }
-//     catch(error){
-
-//     }
-// })
+app.delete('deleteData/:id',async function(request,response){
+    try{
+       const deleted = await Restaurant.findById(request.params.id)
+        if(deleted){
+            await Restaurant.findOneAndReplace(request.params.id)
+            response.status(200).json({
+                "status" :"Deletion success"
+            })
+        }
+        else{
+            response.status(404).json({
+                "status" : "failure"
+            })
+        }
+    }
+    catch(error){
+        response.status(500).json({
+            "status" : "The file is not deleted"
+        })  
+    }
+})
 
 // sign in (or) to create new user
 app.post('/sign-up',async function(request,response){
