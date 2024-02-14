@@ -54,13 +54,11 @@ app.get('/fetchData',async function(request,response){
     try {
      const user=await Restaurant.find()
      console.log(user)
-     response.json({
-        "status" :"valid"
-    })
+     response.json(user)
     }
     catch(error){
         response.json({
-            "status" :"In valid"
+            "status" :"Unable to fetch"
         })
     }
 })
